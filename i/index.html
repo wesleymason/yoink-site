@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>You're invited · Yoink</title>
+  <meta name="description" content="A white elephant party invite from Yoink: the date, what to bring, the house rules and the duel games.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#FFF8EF">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <style>
+    .invite .wrap { max-width: 640px; padding-top: 40px; padding-bottom: 96px; text-align: center; }
+    .invite .mascot { width: 150px; margin: 0 auto 12px; }
+    .invite .eyebrow { display: inline-block; margin-bottom: 10px; color: var(--berry); font-size: 14px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+    .invite h1 { margin: 0 0 12px; font-family: "Lilita One", sans-serif; font-weight: 400; font-size: clamp(36px, 7vw, 52px); line-height: 1.05; }
+    .invite .when { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: color-mix(in srgb, var(--sky) 16%, transparent); color: #2F7FD1; font-weight: 800; font-size: 16px; }
+    .invite .actions { display: flex; flex-direction: column; gap: 12px; align-items: center; margin: 28px 0 8px; }
+    .invite .actions .button { width: min(360px, 100%); }
+    .invite .hint { color: var(--ink-muted); font-size: 15px; margin: 0 0 32px; }
+    .invite .panel { text-align: left; background: var(--surface); border: 1px solid var(--rule); border-radius: 20px; padding: 20px 22px; margin-bottom: 16px; }
+    .invite .panel h2 { margin: 0 0 12px; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    .invite .panel ul { list-style: none; margin: 0; padding: 0; }
+    .invite .panel li { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-top: 1px solid var(--rule); }
+    .invite .panel li:first-child { border-top: 0; padding-top: 0; }
+    .invite .num { flex: none; width: 26px; height: 26px; border-radius: 50%; background: color-mix(in srgb, var(--plum) 15%, transparent); color: var(--plum); font-weight: 900; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+    .invite .game b { display: block; font-size: 17px; }
+    .invite .game span { color: var(--ink-muted); font-size: 15px; }
+    .invite .game small { display: inline-block; margin-top: 4px; padding: 2px 9px; border-radius: 999px; background: color-mix(in srgb, var(--gold) 22%, transparent); color: #9A7418; font-size: 12px; font-weight: 800; }
+    .invite .broken { padding: 40px 0; color: var(--ink-muted); }
+    #bring h2 { color: #9A7418; } #rules h2 { color: var(--berry); } #games h2 { color: var(--plum); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../" aria-label="Yoink home">
+        <img src="../assets/img/mascot.svg" alt="" width="44" height="41">
+        <span>Yoink</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="invite">
+    <div class="wrap" id="card" hidden>
+      <img class="mascot" src="../assets/img/mascot.svg" alt="">
+      <span class="eyebrow">You're invited!</span>
+      <h1 id="name"></h1>
+      <div class="when" id="when" hidden>📅 <span id="date"></span></div>
+
+      <div class="actions">
+        <a class="button" id="open" href="#">Open in Yoink</a>
+        <a class="button soon" id="get" href="#" style="background: var(--ink); box-shadow: 0 5px 0 #000; cursor: pointer;">
+          <span class="label"><small>Don't have it yet?</small>Get Yoink for iPhone</span>
+        </a>
+      </div>
+      <p class="hint">Yoink runs the party: turn order, steals, duels and the big reveal. Get it, then tap <b>Open in Yoink</b> to keep this invite on your phone.</p>
+
+      <section class="panel" id="bring">
+        <h2>Bring</h2>
+        <ul>
+          <li>🎁 <span id="gift"></span></li>
+          <li>⚡️ <span>Your game face. Steals can turn into duels.</span></li>
+        </ul>
+      </section>
+
+      <section class="panel" id="rules">
+        <h2>House rules</h2>
+        <ul id="rulelist"></ul>
+      </section>
+
+      <section class="panel" id="games" hidden>
+        <h2>Duel games to practice</h2>
+        <p style="margin:0 0 12px;color:var(--ink-muted);font-size:15px">When someone steals your gift, one of these settles it. Every game has an animated how-to in the app.</p>
+        <ul id="gamelist"></ul>
+      </section>
+    </div>
+
+    <div class="wrap broken" id="broken" hidden>
+      <img class="mascot" src="../assets/img/mascot.svg" alt="">
+      <h1>Hmm, this invite didn't open</h1>
+      <p>The link looks incomplete. Ask the host to send it again.</p>
+      <p><a class="button" href="../">Go to yoinkparty.com</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="brand" href="../" aria-label="Yoink home">
+        <img src="../assets/img/mascot.svg" alt="" width="34" height="32">
+        <span>Yoink</span>
+      </a>
+      <nav aria-label="Footer">
+        <a href="../support.html">Support</a>
+        <a href="../privacy.html">Privacy Policy</a>
+      </nav>
+      <span>&copy; 2026 Yoink</span>
+    </div>
+  </footer>
+
+  <script>
+    // Where "Get Yoink" goes. Use the TestFlight public link until the app is on the App Store.
+    const TESTFLIGHT_URL = "";
+    const APP_STORE_URL = "https://apps.apple.com/app/id6825079399";
+    const GAMES = {"cup-stack": {"n": "Cup Stack", "s": "Build a pyramid, knock it down, race the clock.", "p": true}, "rock-paper-scissors": {"n": "Rock Paper Scissors", "s": "The classic. Best of one, no take-backs.", "p": false}, "cup-flip": {"n": "Cup Flip", "s": "Flip your cup from upside down to right side up. First one standing wins.", "p": true}, "cookie-face": {"n": "Cookie Face", "s": "Cookie on your forehead. Get it to your mouth, no hands.", "p": true}, "straw-suck": {"n": "Straw Suck", "s": "Suck up candy with a straw and move it to your plate. Most moved wins.", "p": true}, "jingle-bell-toss": {"n": "Jingle Bell Toss", "s": "Bounce a ping pong ball into a cup. First to sink it wins.", "p": true}, "blind-tree-draw": {"n": "Blind Tree Draw", "s": "Draw a Christmas tree blindfolded. The crowd picks the best one.", "p": true}, "sugar-cube-tower": {"n": "Sugar Cube Tower", "s": "Stack sugar cubes as high as you can before the clock runs out.", "p": true}, "staring-contest": {"n": "Staring Contest", "s": "Lock eyes. First to blink or laugh loses.", "p": false}, "dont-laugh": {"n": "Don't Laugh", "s": "Make your opponent laugh in 30 seconds without touching them.", "p": false}, "category-clash": {"n": "Category Clash", "s": "Name things in a category. Stall or repeat and you lose.", "p": false}, "marshmallow-mouth": {"n": "Marshmallow Mouth", "s": "Stuff in marshmallows and keep saying \"chubby bunny.\"", "p": true}, "spoon-on-nose": {"n": "Spoon on Nose", "s": "Hang a spoon from your nose. Last one hanging wins.", "p": true}, "wrap-race": {"n": "Wrap Race", "s": "Wrap a small box with paper and tape. Fastest neat wrap wins.", "p": true}, "tissue-pull": {"n": "Tissue Pull", "s": "Pull every tissue out of a box with one hand. Fastest wins.", "p": true}};
+
+    function decode(token) {
+      let b64 = token.replace(/-/g, "+").replace(/_/g, "/");
+      while (b64.length % 4) b64 += "=";
+      const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+      return JSON.parse(new TextDecoder().decode(bytes));
+    }
+
+    function ruleLines(r) {
+      const lines = [];
+      if (!r) return lines;
+      lines.push(r.m === 1 ? "A gift can only be stolen once" : r.m > 0 ? `A gift freezes after ${r.m} steals` : "No limit on steals");
+      lines.push(r.s ? "You can steal right back" : "No stealing right back");
+      if (r.d) lines.push(r.r ? "Steals can turn into duels, picked at random" : "Steals can turn into duels, host's pick");
+      if (r.f) lines.push("Player 1 gets a final swap at the end");
+      return lines;
+    }
+
+    const token = location.hash.slice(1);
+    let invite = null;
+    try { invite = token ? decode(token) : null; } catch (e) {}
+
+    if (!invite || !invite.n) {
+      document.getElementById("broken").hidden = false;
+    } else {
+      document.title = `You're invited to ${invite.n} · Yoink`;
+      document.getElementById("name").textContent = invite.n;
+      if (invite.d) {
+        const [y, m, d] = invite.d.split("-").map(Number);
+        const date = new Date(y, m - 1, d, 12);
+        document.getElementById("date").textContent = date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+        document.getElementById("when").hidden = false;
+      }
+      document.getElementById("gift").textContent = "A wrapped gift" + (invite.b ? ` around ${invite.b}` : "");
+      const rules = document.getElementById("rulelist");
+      ruleLines(invite.r).forEach((line, i) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span class="num">${i + 1}</span><span></span>`;
+        li.lastChild.textContent = line;
+        rules.appendChild(li);
+      });
+      if (invite.r && invite.r.d) {
+        const ids = (invite.g && invite.g.length) ? invite.g.filter(id => GAMES[id]) : Object.keys(GAMES);
+        if (ids.length) {
+          const list = document.getElementById("gamelist");
+          ids.forEach(id => {
+            const g = GAMES[id];
+            const li = document.createElement("li");
+            li.className = "game";
+            li.innerHTML = `<div><b></b><span></span>${g.p ? "<br><small>Needs props</small>" : ""}</div>`;
+            li.querySelector("b").textContent = g.n;
+            li.querySelector("span").textContent = g.s;
+            list.appendChild(li);
+          });
+          document.getElementById("games").hidden = false;
+        }
+      }
+      document.getElementById("open").href = "yoink://invite#" + token;
+      document.getElementById("get").href = TESTFLIGHT_URL || APP_STORE_URL;
+      document.getElementById("card").hidden = false;
+    }
+  </script>
+</body>
+</html>
