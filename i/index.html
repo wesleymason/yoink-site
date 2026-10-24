@@ -185,25 +185,31 @@
     let invite = null;
     try { invite = token ? decode(token) : null; } catch (e) {}
 
-    if (!invite || !invite.n) {
-      document.getElementById("broken").hidden = false;
-    } else {
-      document.title = `You're invited to ${invite.n} · Yoink`;
-      document.getElementById("name").textContent = invite.n;
-      if (invite.d) {
-        const [y, m, d] = invite.d.split("-").map(Number);
+    // Name, date, budget and rules. Run again when the host has published a newer version.
+    function fillDetails(inv) {
+      document.title = `You're invited to ${inv.n} · Yoink`;
+      document.getElementById("name").textContent = inv.n;
+      if (inv.d) {
+        const [y, m, d] = inv.d.split("-").map(Number);
         const date = new Date(y, m - 1, d, 12);
         document.getElementById("date").textContent = date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
-        document.getElementById("when").hidden = false;
       }
-      document.getElementById("gift").textContent = "A wrapped gift" + (invite.b ? ` around ${invite.b}` : "");
+      document.getElementById("when").hidden = !inv.d;
+      document.getElementById("gift").textContent = "A wrapped gift" + (inv.b ? ` around ${inv.b}` : "");
       const rules = document.getElementById("rulelist");
-      ruleLines(invite.r).forEach((line, i) => {
+      rules.replaceChildren();
+      ruleLines(inv.r).forEach((line, i) => {
         const li = document.createElement("li");
         li.innerHTML = `<span class="num">${i + 1}</span><span></span>`;
         li.lastChild.textContent = line;
         rules.appendChild(li);
       });
+    }
+
+    if (!invite || !invite.n) {
+      document.getElementById("broken").hidden = false;
+    } else {
+      fillDetails(invite);
       document.getElementById("open").href = "yoink://invite#" + token;
       document.getElementById("get").href = TESTFLIGHT_URL || APP_STORE_URL;
       if (isIOS) {
@@ -216,16 +222,31 @@
         document.getElementById("ios-actions").hidden = false;
       }
       document.getElementById("card").hidden = false;
-      if (invite.i) checkCancelled(invite.i, invite.n);
+      if (invite.i) checkForUpdates(invite);
     }
 
-    // The host's app leaves a notice in CloudKit when a party is cancelled; the relay reads it.
-    async function checkCancelled(inviteID, partyName) {
+    // The relay reads what the host's app leaves in CloudKit: the latest version of the invite
+    // (a changed date, budget or rules) and a notice if the party was cancelled.
+    async function checkForUpdates(original) {
+      let data;
       try {
-        const res = await fetch(`${RSVP_API}?inviteID=${encodeURIComponent(inviteID)}`);
-        const data = await res.json();
-        if (!res.ok || !data.cancelled) return;
+        const res = await fetch(`${RSVP_API}?inviteID=${encodeURIComponent(original.i)}`);
+        data = await res.json();
+        if (!res.ok) return;
       } catch (e) { return; }
+      let current = original;
+      if (data.token) {
+        try {
+          const latest = decode(data.token);
+          if (latest && latest.n && latest.i === original.i) {
+            current = latest;
+            fillDetails(latest);
+            document.getElementById("open").href = "yoink://invite#" + data.token;
+          }
+        } catch (e) {}
+      }
+      if (!data.cancelled) return;
+      const partyName = current.n;
       document.title = `${partyName} was cancelled · Yoink`;
       document.getElementById("eyebrow").textContent = "Party cancelled";
       document.getElementById("when").classList.add("off");
