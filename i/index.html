@@ -252,7 +252,7 @@
         document.getElementById("rsvp-icon").className = "rsvp-check" + (mine.isComing ? "" : " out");
         document.getElementById("rsvp-icon").textContent = mine.isComing ? "✓" : "✕";
         document.getElementById("rsvp-title").textContent = mine.isComing ? `You're in, ${mine.name}!` : "You said you can't make it";
-        document.getElementById("rsvp-sub").textContent = mine.isComing ? "You're on the host's list. Need a different name? Ask the host." : "Change your mind any time.";
+        document.getElementById("rsvp-sub").textContent = mine.isComing ? "You're on the host's list and added to the game. Reach out to the host for more party details." : "Change your mind any time.";
         document.getElementById("rsvp-toggle").textContent = mine.isComing ? "Can't make it" : "I'll be there after all";
       }
 
