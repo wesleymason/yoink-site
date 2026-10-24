@@ -54,6 +54,11 @@
     .rsvp-check.out { background: var(--ink-muted); }
     .rsvp .hint { margin-top: 20px; text-align: center; }
     .rsvp .hint a { color: var(--berry-shade); font-weight: 800; }
+    .invite .when.off { text-decoration: line-through; opacity: 0.6; }
+    .cancelled { display: flex; gap: 14px; align-items: flex-start; text-align: left; max-width: 420px; margin: 28px auto 8px; background: var(--surface); border: 1px solid var(--rule); border-radius: 20px; padding: 18px 20px; }
+    .cancelled .rsvp-check { background: var(--berry); }
+    .cancelled b { display: block; font-size: 18px; margin-bottom: 4px; }
+    .cancelled p { margin: 0; color: var(--ink-muted); font-size: 15px; }
   </style>
 </head>
 <body>
@@ -70,9 +75,18 @@
   <main class="invite">
     <div class="wrap" id="card" hidden>
       <img class="mascot" src="../assets/img/mascot.svg" alt="">
-      <span class="eyebrow">You're invited!</span>
+      <span class="eyebrow" id="eyebrow">You're invited!</span>
       <h1 id="name"></h1>
       <div class="when" id="when" hidden>📅 <span id="date"></span></div>
+
+      <!-- Shown instead of everything below when the host has called the party off. -->
+      <div class="cancelled" id="cancelled" hidden>
+        <span class="rsvp-check">✕</span>
+        <div>
+          <b>The host called it off</b>
+          <p id="cancelled-text"></p>
+        </div>
+      </div>
 
       <div class="actions" id="ios-actions" hidden>
         <a class="button" id="open" href="#">Open in Yoink</a>
@@ -225,6 +239,22 @@
         document.getElementById("ios-actions").hidden = false;
       }
       document.getElementById("card").hidden = false;
+      if (invite.i) checkCancelled(invite.i, invite.n);
+    }
+
+    // The host's app leaves a notice in CloudKit when a party is cancelled; the relay reads it.
+    async function checkCancelled(inviteID, partyName) {
+      try {
+        const res = await fetch(`${RSVP_API}?inviteID=${encodeURIComponent(inviteID)}`);
+        const data = await res.json();
+        if (!res.ok || !data.cancelled) return;
+      } catch (e) { return; }
+      document.title = `${partyName} was cancelled · Yoink`;
+      document.getElementById("eyebrow").textContent = "Party cancelled";
+      document.getElementById("when").classList.add("off");
+      ["ios-actions", "ios-hint", "web-rsvp", "bring", "rules", "games"].forEach(id => { document.getElementById(id).hidden = true; });
+      document.getElementById("cancelled-text").textContent = `${partyName} isn't happening. If plans change, the host will send a new invite.`;
+      document.getElementById("cancelled").hidden = false;
     }
 
     function setupWebRSVP(inviteID) {
