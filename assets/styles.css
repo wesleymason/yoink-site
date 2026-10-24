@@ -107,6 +107,8 @@ a { color: inherit; }
   transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
 .button:hover { filter: brightness(1.04); }
+/* <button class="button"> would otherwise keep the browser's default border and font. */
+button.button { border: 0; font-family: inherit; cursor: pointer; -webkit-appearance: none; appearance: none; }
 .button:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--berry-shade); }
 .button.small { min-height: 44px; padding: 0 18px; font-size: 16px; border-radius: 13px; box-shadow: 0 4px 0 var(--berry-shade); }
 .button svg { width: 22px; height: 22px; flex: none; }

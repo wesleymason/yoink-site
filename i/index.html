@@ -43,8 +43,10 @@
     .rsvp input { width: 100%; box-sizing: border-box; font: inherit; font-size: 18px; font-weight: 700; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--rule); background: var(--surface); margin-bottom: 12px; }
     .rsvp input:focus { outline: 2px solid var(--pine); border-color: transparent; }
     .rsvp .button { width: 100%; background: var(--pine); box-shadow: 0 5px 0 #199464; }
+    .rsvp .button:active { box-shadow: 0 1px 0 #199464; }
     .rsvp .button:disabled { opacity: 0.6; }
     .rsvp .button.ghost { background: transparent; box-shadow: none; color: var(--berry-shade); min-height: 44px; }
+    .rsvp .button.ghost:active { box-shadow: none; transform: none; opacity: 0.7; }
     .rsvp-note { margin: 10px 0 0; font-size: 14px; color: var(--ink-muted); text-align: center; }
     .rsvp-error { margin: 10px 0 0; font-size: 15px; color: var(--berry-shade); font-weight: 700; text-align: center; }
     .rsvp-card { display: flex; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--rule); border-radius: 20px; padding: 16px 18px; margin-bottom: 8px; }
@@ -207,7 +209,8 @@
         li.lastChild.textContent = line;
         rules.appendChild(li);
       });
-      if (invite.r && invite.r.d) {
+      // Duel games to practice only make sense with the app, so guests on the web RSVP page skip them.
+      if (isIOS && invite.r && invite.r.d) {
         const ids = (invite.g && invite.g.length) ? invite.g.filter(id => GAMES[id]) : Object.keys(GAMES);
         if (ids.length) {
           const list = document.getElementById("gamelist");
