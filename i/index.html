@@ -52,8 +52,6 @@
     .rsvp-card span:not(.rsvp-check) { color: var(--ink-muted); font-size: 15px; }
     .rsvp-check { flex: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; color: #fff; background: var(--pine); }
     .rsvp-check.out { background: var(--ink-muted); }
-    .rsvp .hint { margin-top: 20px; text-align: center; }
-    .rsvp .hint a { color: var(--berry-shade); font-weight: 800; }
     .invite .when.off { text-decoration: line-through; opacity: 0.6; }
     .cancelled { display: flex; gap: 14px; align-items: flex-start; text-align: left; max-width: 420px; margin: 28px auto 8px; background: var(--surface); border: 1px solid var(--rule); border-radius: 20px; padding: 18px 20px; }
     .cancelled .rsvp-check { background: var(--berry); }
@@ -115,7 +113,6 @@
           </div>
           <button class="button ghost" type="button" id="rsvp-toggle"></button>
         </div>
-        <p class="hint">Have an iPhone? <a href="#" id="get-ios">Get Yoink</a> to run your own party.</p>
       </div>
 
       <section class="panel" id="bring">
@@ -228,7 +225,6 @@
       }
       document.getElementById("open").href = "yoink://invite#" + token;
       document.getElementById("get").href = TESTFLIGHT_URL || APP_STORE_URL;
-      document.getElementById("get-ios").href = TESTFLIGHT_URL || APP_STORE_URL;
       if (isIOS) {
         document.getElementById("ios-actions").hidden = false;
         document.getElementById("ios-hint").hidden = false;
