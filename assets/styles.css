@@ -212,7 +212,7 @@ button.button { border: 0; font-family: inherit; cursor: pointer; -webkit-appear
 
 /* The screenshots are exported with their own phone frame on a transparent background. */
 .phone { width: 300px; }
-.phone img { width: 100%; height: auto; filter: drop-shadow(0 24px 40px rgba(30, 27, 46, 0.28)); }
+.phone img { width: 100%; height: auto; }
 
 .tv { width: min(560px, 100%); filter: drop-shadow(0 30px 40px rgba(30, 27, 46, 0.22)); }
 
