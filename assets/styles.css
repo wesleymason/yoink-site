@@ -202,14 +202,9 @@ button.button { border: 0; font-family: inherit; cursor: pointer; -webkit-appear
 
 .media { display: flex; justify-content: center; }
 
-.phone {
-  width: 264px;
-  border-radius: 44px;
-  padding: 10px;
-  background: var(--ink);
-  box-shadow: 0 30px 60px -20px rgba(30, 27, 46, 0.35), 0 0 0 1px rgba(30, 27, 46, 0.08);
-}
-.phone img { border-radius: 35px; width: 100%; height: auto; }
+/* The screenshots are exported with their own phone frame on a transparent background. */
+.phone { width: 300px; }
+.phone img { width: 100%; height: auto; filter: drop-shadow(0 24px 40px rgba(30, 27, 46, 0.28)); }
 
 .tv { width: min(560px, 100%); filter: drop-shadow(0 30px 40px rgba(30, 27, 46, 0.22)); }
 
@@ -319,8 +314,7 @@ button.button { border: 0; font-family: inherit; cursor: pointer; -webkit-appear
   }
   .feature:nth-of-type(even) .copy { order: 0; }
   .feature p { margin: 0 auto; font-size: 16px; }
-  .phone { width: 250px; border-radius: 40px; padding: 8px; }
-  .phone img { border-radius: 33px; }
+  .phone { width: 270px; }
 
   .cta { padding: 80px 0 88px; }
   .site-footer .wrap { flex-direction: column; align-items: flex-start; }
