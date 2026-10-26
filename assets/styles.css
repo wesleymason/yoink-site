@@ -70,8 +70,15 @@ a { color: inherit; }
 .site-header .wrap {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 72px;
+}
+.site-header .tagline {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+  text-align: right;
 }
 
 .brand {
@@ -306,6 +313,7 @@ h1, h2 { text-wrap: balance; }
   body { font-size: 16px; }
   :root { --gutter: 16px; }
   .site-header .wrap { height: 64px; }
+  .site-header .tagline { font-size: 13px; max-width: 46%; }
   .brand span { font-size: 24px; }
   .brand img { width: 38px; }
 
