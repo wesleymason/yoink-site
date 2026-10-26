@@ -180,6 +180,9 @@ button.button { border: 0; font-family: inherit; cursor: pointer; -webkit-appear
 }
 .feature:nth-of-type(even) .copy { order: 2; }
 
+/* Headings wrap into lines of similar length instead of leaving a lone word at the end. */
+h1, h2 { text-wrap: balance; }
+
 .feature h2 {
   margin: 0 0 16px;
   font-family: "Lilita One", sans-serif;
