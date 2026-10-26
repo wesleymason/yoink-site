@@ -113,7 +113,7 @@ button.button { border: 0; font-family: inherit; cursor: pointer; -webkit-appear
 .button.small { min-height: 44px; padding: 0 18px; font-size: 16px; border-radius: 13px; box-shadow: 0 4px 0 var(--berry-shade); }
 .button svg { width: 22px; height: 22px; flex: none; }
 
-.button.soon {
+.button.store {
   gap: 14px;
   min-height: 62px;
   padding: 0 30px 0 24px;
@@ -121,14 +121,13 @@ button.button { border: 0; font-family: inherit; cursor: pointer; -webkit-appear
   background: linear-gradient(180deg, #2A2640 0%, var(--ink) 100%);
   /* A deeper ink for the edge instead of pure black, and a hairline of light along the top. */
   box-shadow: 0 5px 0 #0F0D1A, inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  cursor: default;
 }
-.button.soon:hover { filter: none; }
-.button.soon:active { transform: none; box-shadow: 0 5px 0 #0F0D1A, inset 0 1px 0 rgba(255, 255, 255, 0.1); }
-.button.soon svg { width: 30px; height: 30px; margin-top: -2px; }
-.button.soon .label { display: flex; flex-direction: column; text-align: left; line-height: 1.1; gap: 3px; }
-.button.soon small { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; color: rgba(255, 255, 255, 0.72); }
-.button.soon .label > :last-child { font-size: 21px; letter-spacing: -0.01em; }
+.button.store:hover { filter: brightness(1.08); }
+.button.store:active { transform: translateY(4px); box-shadow: 0 1px 0 #0F0D1A, inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+.button.store svg { width: 30px; height: 30px; margin-top: -2px; }
+.button.store .label { display: flex; flex-direction: column; text-align: left; line-height: 1.1; gap: 3px; }
+.button.store small { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; color: rgba(255, 255, 255, 0.72); }
+.button.store .label > :last-child { font-size: 21px; letter-spacing: -0.01em; }
 
 /* Hero */
 
