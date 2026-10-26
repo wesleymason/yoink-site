@@ -14,6 +14,17 @@
   <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <!-- Safari's Smart App Banner: Open if Yoink is installed, Get if not. The app-argument
+       carries this invite, so Open lands on the party. Written here so it includes the token. -->
+  <script>
+    (function () {
+      var meta = document.createElement("meta");
+      meta.name = "apple-itunes-app";
+      var token = location.hash.slice(1);
+      meta.content = "app-id=6825079399" + (token ? ", app-argument=yoink://invite#" + token : "");
+      document.head.appendChild(meta);
+    })();
+  </script>
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="stylesheet" href="../assets/styles.css">
