@@ -70,7 +70,7 @@ a { color: inherit; }
 .site-header .wrap {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 72px;
 }
 
@@ -116,21 +116,21 @@ button.button { border: 0; font-family: inherit; cursor: pointer; -webkit-appear
 .button.small { min-height: 44px; padding: 0 18px; font-size: 16px; border-radius: 13px; box-shadow: 0 4px 0 var(--berry-shade); }
 .button svg { width: 22px; height: 22px; flex: none; }
 
-/* Styled after Apple's App Store badge: flat black, thin light border, no chunky edge. */
+/* App Store buttons: Apple's badge layout, with the app's chunky bevel. Near-black fill so
+   the black edge underneath reads as the bevel; pressing pushes it down like the app's buttons. */
 .button.store {
   gap: 10px;
   min-height: 62px;
   padding: 0 24px 0 16px;
-  border-radius: 13px;
-  background: #000;
-  border: 1px solid #A6A6A6;
-  box-shadow: none;
+  border-radius: 16px;
+  background: #16161C;
   color: #fff;
+  box-shadow: 0 5px 0 #000;
 }
 @media (hover: hover) {
-  .button.store:hover { transform: translateY(-2px); filter: none; background: #1A1A1A; border-color: #D0D0D0; box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.55); }
+  .button.store:hover { transform: translateY(-2px); filter: none; background: #202028; box-shadow: 0 7px 0 #000; }
 }
-.button.store:active { transform: translateY(0) scale(0.98); box-shadow: none; }
+.button.store:active { transform: translateY(4px); box-shadow: 0 1px 0 #000; filter: none; }
 .button.store svg { width: 38px; height: 38px; margin-top: -2px; }
 .button.store .label { display: flex; flex-direction: column; text-align: left; line-height: 1; gap: 2px; }
 .button.store small { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.01em; color: #fff; }
