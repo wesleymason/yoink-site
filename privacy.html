@@ -39,6 +39,13 @@
     src="https://ct.pinterest.com/v3/?event=init&tid=2612843000808&noscript=1" />
   </noscript>
   <!-- end Pinterest Tag -->
+  <script>
+  // Pinterest conversion events: a Lead whenever an App Store link is tapped.
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
+    if (a && window.pintrk) pintrk('track', 'lead', { lead_type: 'App Store' });
+  });
+  </script>
 </head>
 <body>
 
