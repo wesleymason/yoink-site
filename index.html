@@ -92,7 +92,11 @@
     <section class="hero">
       <div class="wrap">
         <div class="hero-art">
-          <img src="assets/img/mascot.svg" alt="Yoink the elephant peeking out of a gift box" width="440" height="411">
+          <!-- The Rive mascot waves on hover; the SVG underneath stays until the runtime has drawn. -->
+          <div class="hero-mascot" id="hero-mascot">
+            <img src="assets/img/mascot.svg" alt="Yoink the elephant peeking out of a gift box" width="440" height="411">
+            <canvas id="hero-mascot-canvas" aria-hidden="true"></canvas>
+          </div>
         </div>
         <div class="hero-copy">
           <h1>White elephant, <em>minus the chaos.</em></h1>
@@ -233,5 +237,32 @@
     </div>
   </footer>
 
+<script src="https://unpkg.com/@rive-app/canvas-lite@2.30.3/rive.js" defer></script>
+<script>
+// Hero mascot: the Rive "Wave" timeline, drawn at rest until the cursor comes over it.
+window.addEventListener("DOMContentLoaded", function () {
+  if (!window.rive) return;
+  var wrap = document.getElementById("hero-mascot");
+  var canvas = document.getElementById("hero-mascot-canvas");
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var r = new rive.Rive({
+    src: "assets/mascot-wave.riv", canvas: canvas, artboard: "Mascot", animations: "Wave", autoplay: false,
+    layout: new rive.Layout({ fit: rive.Fit.Contain, alignment: rive.Alignment.Center }),
+    onLoad: function () {
+      r.resizeDrawingSurfaceToCanvas();
+      r.scrub("Wave", 0);
+      wrap.classList.add("ready");
+    }
+  });
+  var wave = function () {
+    if (still || !wrap.classList.contains("ready") || r.isPlaying) return;
+    r.stop();
+    r.play("Wave");
+  };
+  wrap.addEventListener("mouseenter", wave);
+  wrap.addEventListener("touchstart", wave, { passive: true });
+  window.addEventListener("resize", function () { if (wrap.classList.contains("ready")) { r.resizeDrawingSurfaceToCanvas(); r.scrub("Wave", 0); } });
+});
+</script>
 </body>
 </html>

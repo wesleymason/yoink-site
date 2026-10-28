@@ -151,6 +151,13 @@ button.button { border: 0; font-family: inherit; cursor: pointer; -webkit-appear
 }
 .hero-art { display: flex; justify-content: center; }
 .hero-art img { width: min(340px, 100%); animation: bob 4s ease-in-out infinite; }
+/* The mascot box keeps the SVG's footprint; the Rive canvas is the whole 500-unit artboard, so it
+   is wider than the mascot (500/369 of it) and centered over the same spot, overflowing invisibly. */
+.hero-mascot { position: relative; width: min(340px, 100%); aspect-ratio: 440 / 411; animation: bob 4s ease-in-out infinite; }
+.hero-mascot img { position: absolute; inset: 0; width: 100%; height: 100%; animation: none; }
+.hero-mascot canvas { position: absolute; left: 50%; top: 50%; width: 135.6%; aspect-ratio: 1; transform: translate(-50%, -47.6%); opacity: 0; pointer-events: none; }
+.hero-mascot.ready canvas { opacity: 1; pointer-events: auto; }
+.hero-mascot.ready img { visibility: hidden; }
 
 @keyframes bob {
   0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -338,6 +345,7 @@ h1, h2 { text-wrap: balance; }
     text-align: center;
   }
   .hero-art img { width: min(230px, 64%); }
+  .hero-mascot { width: min(230px, 64%); }
   .hero p.lead { margin-left: auto; margin-right: auto; font-size: 17px; }
   .hero .actions { justify-content: center; flex-direction: column; }
 
@@ -358,7 +366,7 @@ h1, h2 { text-wrap: balance; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-art img { animation: none; }
+  .hero-art img, .hero-mascot { animation: none; }
   .button { transition: none; }
   .button:hover, .button.store:hover { transform: none; }
 }
