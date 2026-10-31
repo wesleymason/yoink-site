@@ -207,8 +207,14 @@
       document.getElementById("name").textContent = inv.n;
       if (inv.d) {
         const [y, m, d] = inv.d.split("-").map(Number);
-        const date = new Date(y, m - 1, d, 12);
-        document.getElementById("date").textContent = date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+        let date = new Date(y, m - 1, d, 12);
+        let when = date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+        if (inv.t) {
+          const [hh, mm] = inv.t.split(":").map(Number);
+          date = new Date(y, m - 1, d, hh, mm);
+          when += " at " + date.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+        }
+        document.getElementById("date").textContent = when;
       }
       document.getElementById("when").hidden = !inv.d;
       document.getElementById("gift").textContent = "A wrapped gift" + (inv.b ? ` around ${inv.b}` : "");
