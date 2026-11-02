@@ -1,7 +1,7 @@
 // Google Analytics 4 for yoinkparty.com. The Measurement ID lives here, so every page shares it.
 // Nothing loads until it's filled in.
 (function () {
-  var ID = "G-XXXXXXXXXX";
+  var ID = "G-TB05FKLE21";
   if (ID.indexOf("XXXX") !== -1) return;
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
