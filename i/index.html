@@ -235,6 +235,11 @@
       fillDetails(invite);
       document.getElementById("open").href = "yoink://invite#" + token;
       document.getElementById("get").href = TESTFLIGHT_URL || APP_STORE_URL;
+      // iOS hands a fresh install no link, so a guest who installs from here would open Yoink to
+      // nothing. The link rides along on the clipboard; the app's first launch looks for it there.
+      document.getElementById("get").addEventListener("click", () => {
+        if (navigator.clipboard) navigator.clipboard.writeText("https://yoinkparty.com/i/#" + token).catch(() => {});
+      });
       if (isIOS) {
         document.getElementById("ios-actions").hidden = false;
         document.getElementById("ios-hint").hidden = false;
