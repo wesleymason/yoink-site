@@ -25,7 +25,9 @@
       var meta = document.createElement("meta");
       meta.name = "apple-itunes-app";
       var token = location.hash.slice(1);
-      meta.content = "app-id=6825079399" + (token ? ", app-argument=yoink://invite#" + token : "");
+      // The App Clip's card shows in Safari and Messages when Yoink isn't installed: the invite
+      // opens in the clip, no install needed.
+      meta.content = "app-id=6825079399, app-clip-bundle-id=com.wesmason.yoink.Clip, app-clip-display=card" + (token ? ", app-argument=yoink://invite#" + token : "");
       document.head.appendChild(meta);
     })();
   </script>

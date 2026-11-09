@@ -2,12 +2,25 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["L6P48ULP9H.com.wesmason.yoink"],
+        "appIDs": [
+          "L6P48ULP9H.com.wesmason.yoink"
+        ],
         "components": [
-          { "/": "/i", "comment": "Party invites open in Yoink" },
-          { "/": "/i/*", "comment": "Party invites open in Yoink" }
+          {
+            "/": "/i",
+            "comment": "Party invites open in Yoink"
+          },
+          {
+            "/": "/i/*",
+            "comment": "Party invites open in Yoink"
+          }
         ]
       }
+    ]
+  },
+  "appclips": {
+    "apps": [
+      "L6P48ULP9H.com.wesmason.yoink.Clip"
     ]
   }
 }
