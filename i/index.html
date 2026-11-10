@@ -30,7 +30,10 @@
        static HTML: Safari reads it while parsing and Messages fetches the page without running
        scripts, so a tag added by JavaScript is never seen. The clip gets this page's URL, token
        and all, as its invocation URL, so no app-argument is needed. -->
-  <meta name="apple-itunes-app" content="app-id=6825079399, app-clip-bundle-id=com.wesmason.yoink.Clip, app-clip-display=card">
+  <!-- App Clip card OFF until Yoink 1.4.1 ships: links from 1.4 carry the token in the fragment,
+       which iOS drops when the card launches the clip. Restore the clip form once 1.4.1 is live:
+       app-id=6825079399, app-clip-bundle-id=com.wesmason.yoink.Clip, app-clip-display=card -->
+  <meta name="apple-itunes-app" content="app-id=6825079399">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="stylesheet" href="../assets/styles.css">
