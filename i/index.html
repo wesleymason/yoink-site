@@ -200,7 +200,9 @@
       return lines;
     }
 
-    const token = location.hash.slice(1);
+    // The invite rides in the link: ?t= on links sent by Yoink 1.4.1 and later, #token on older
+    // ones. (iOS strips the fragment when a card launches the App Clip, hence the move.)
+    const token = new URLSearchParams(location.search).get("t") || location.hash.slice(1);
     let invite = null;
     try { invite = token ? decode(token) : null; } catch (e) {}
 
@@ -240,7 +242,7 @@
       // iOS hands a fresh install no link, so a guest who installs from here would open Yoink to
       // nothing. The link rides along on the clipboard; the app's first launch looks for it there.
       document.getElementById("get").addEventListener("click", () => {
-        if (navigator.clipboard) navigator.clipboard.writeText("https://yoinkparty.com/i/#" + token).catch(() => {});
+        if (navigator.clipboard) navigator.clipboard.writeText("https://yoinkparty.com/i/?t=" + token).catch(() => {});
       });
       if (isIOS) {
         document.getElementById("ios-actions").hidden = false;
