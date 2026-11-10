@@ -26,19 +26,11 @@
   <meta property="og:video:height" content="630">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Safari's Smart App Banner: Open if Yoink is installed, Get if not. The app-argument
-       carries this invite, so Open lands on the party. Written here so it includes the token. -->
-  <script>
-    (function () {
-      var meta = document.createElement("meta");
-      meta.name = "apple-itunes-app";
-      var token = location.hash.slice(1);
-      // The App Clip's card shows in Safari and Messages when Yoink isn't installed: the invite
-      // opens in the clip, no install needed.
-      meta.content = "app-id=6825079399, app-clip-bundle-id=com.wesmason.yoink.Clip, app-clip-display=card" + (token ? ", app-argument=yoink://invite#" + token : "");
-      document.head.appendChild(meta);
-    })();
-  </script>
+  <!-- The App Clip card (Safari, Messages) and Safari's Smart App Banner. This has to be in the
+       static HTML: Safari reads it while parsing and Messages fetches the page without running
+       scripts, so a tag added by JavaScript is never seen. The clip gets this page's URL, token
+       and all, as its invocation URL, so no app-argument is needed. -->
+  <meta name="apple-itunes-app" content="app-id=6825079399, app-clip-bundle-id=com.wesmason.yoink.Clip, app-clip-display=card">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="stylesheet" href="../assets/styles.css">
