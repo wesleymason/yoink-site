@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "tag": "yoink06-20",
   "plain": [],
   "featured": { "list": "HSARZXHYZA01", "search": "minute to win it party game supplies" },
@@ -21,6 +21,12 @@
     "tissue boxes": { "search": "tissue boxes" },
     "wrapping paper": { "search": "christmas wrapping paper" },
     "table": { "search": "folding table" },
-    "paper": { "search": "drawing paper pad" }
+    "paper": { "search": "drawing paper pad" },
+    "tea light candles": { "search": "tea light candles" },
+    "lighter": { "search": "candle lighter" },
+    "cotton balls": { "search": "cotton balls" },
+    "party blowers": { "search": "party blowers noisemakers" },
+    "balloons": { "search": "party balloons" },
+    "chairs": { "search": "folding chairs" }
   }
 }
