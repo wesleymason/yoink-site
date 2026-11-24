@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "tag": "yoink06-20",
   "plain": [],
   "featured": { "list": "HSARZXHYZA01", "search": "minute to win it party game supplies" },
@@ -27,6 +27,9 @@
     "cotton balls": { "search": "cotton balls" },
     "party blowers": { "search": "party blowers noisemakers" },
     "balloons": { "search": "party balloons" },
-    "chairs": { "search": "folding chairs" }
+    "chairs": { "search": "folding chairs" },
+    "gift bows": { "search": "christmas gift bows" },
+    "spatulas": { "search": "kitchen spatula" },
+    "bowls": { "search": "plastic serving bowls" }
   }
 }
