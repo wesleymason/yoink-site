@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "tag": "yoink06-20",
+  "plain": ["table", "paper"],
+  "props": {
+    "cups": { "search": "red plastic party cups" },
+    "blindfolds": { "search": "blindfolds for party games" },
+    "cookies": { "search": "oreo cookies" },
+    "ping pong balls": { "search": "ping pong balls" },
+    "plates": { "search": "paper plates" },
+    "straws": { "search": "drinking straws" },
+    "boxes": { "search": "gift boxes with lids" },
+    "candy": { "search": "skittles candy" },
+    "markers": { "search": "washable markers" },
+    "marshmallows": { "search": "marshmallows" },
+    "metal spoons": { "search": "metal teaspoons" },
+    "napkins": { "search": "holiday party napkins" },
+    "sugar cubes": { "search": "sugar cubes" },
+    "tape": { "search": "gift wrap tape" },
+    "tissue boxes": { "search": "tissue boxes" },
+    "wrapping paper": { "search": "christmas wrapping paper" }
+  }
+}

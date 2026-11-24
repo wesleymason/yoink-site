@@ -325,6 +325,7 @@ h1, h2 { text-wrap: balance; }
 
 .site-footer .footer-guides { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
 .site-footer .footer-heading { font-weight: 800; color: #fff; margin-right: 4px; }
+.site-footer .footer-note { flex-basis: 100%; font-size: 13px; opacity: 0.8; }
 
 /* Responsive */
 
