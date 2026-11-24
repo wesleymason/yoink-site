@@ -228,8 +228,18 @@ h1, h2 { text-wrap: balance; }
 .media { display: flex; justify-content: center; }
 
 /* The screenshots are exported with their own phone frame on a transparent background. */
-.phone { width: 300px; }
-.phone img { width: 100%; height: auto; }
+.phone { width: 300px; position: relative; }
+.phone img { display: block; width: 100%; height: auto; }
+/* A looping how-to video laid over its spot in a screenshot (position set inline, in % of the
+   frame). The video's background is white like the sheet behind it; multiply and a touch of
+   brightness hide the edge where a browser decodes that white a shade darker. */
+.phone-demo {
+  position: absolute;
+  object-fit: fill;
+  mix-blend-mode: multiply;
+  filter: brightness(1.02);
+  pointer-events: none;
+}
 
 .tv { width: min(560px, 100%); filter: drop-shadow(0 30px 40px rgba(30, 27, 46, 0.22)); }
 
