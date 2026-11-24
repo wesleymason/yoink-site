@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "tag": "yoink06-20",
-  "plain": ["table", "paper"],
+  "plain": [],
   "props": {
     "cups": { "search": "red plastic party cups" },
     "blindfolds": { "search": "blindfolds for party games" },
@@ -18,6 +18,8 @@
     "sugar cubes": { "search": "sugar cubes" },
     "tape": { "search": "gift wrap tape" },
     "tissue boxes": { "search": "tissue boxes" },
-    "wrapping paper": { "search": "christmas wrapping paper" }
+    "wrapping paper": { "search": "christmas wrapping paper" },
+    "table": { "search": "folding table" },
+    "paper": { "search": "drawing paper pad" }
   }
 }
